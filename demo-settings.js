@@ -13,7 +13,7 @@
 var demo = {
     serviceUrl: "https://r3.smarthealthit.org",
     patientId: "7b697322-3607-46cb-a240-c081bccba2e5"
-};
+}
 
 // var demo = {
 //    serviceUrl: "https://apporchard.epic.com/interconnect-aocurprd-username/api/FHIR/STU3",

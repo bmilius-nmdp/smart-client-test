@@ -5,17 +5,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- <link rel='stylesheet' type='text/css' href='./src/css/example-smart-app.css'> -->
-    <title>Example-SMART-App</title>
+    <title>SMART Client Test Launch</title>
 </head>
 
 <body>
-    <script src='./fhir-client.js'></script>
+    <script src='fhir-client.js'></script>
     <script>
         FHIR.oauth2.authorize({
             'client_id': '448b66d5-ce3a-4feb-8a2d-4e6dbc652f76',
             'scope': 'patient/Patient.read patient/Observation.read launch online_access openid fhiruser'
         });
-    </script>;
+    </script>
 
     <div class="spinner">
         <div class="bounce1"></div>

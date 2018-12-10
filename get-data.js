@@ -96,6 +96,7 @@ function displayObservation(observation) {
 // Create a FHIR client (server URL, patient id in `demo`)
 // var smart = FHIR.client(demo),
 var pt = smart.patient;
+console.log(smart.patient);
 
 // Create a patient banner by fetching + rendering demographics
 smart.patient.read().then(function (pt) {

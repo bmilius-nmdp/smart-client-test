@@ -93,36 +93,39 @@ function displayObservation(observation) {
     }
 }
 
-// Create a FHIR client (server URL, patient id in `demo`)
-// var smart = FHIR.client(demo),
-var pt = smart.patient;
-console.log(smart.patient);
+FHIR.oauth2.ready(function (smart) {
 
-// Create a patient banner by fetching + rendering demographics
-smart.patient.read().then(function (pt) {
-    displayPatient(pt);
+    // Create a FHIR client (server URL, patient id in `demo`)
+    // var smart = FHIR.client(demo),
+    var pt = smart.patient;
+    console.log(smart.patient);
+
+    // Create a patient banner by fetching + rendering demographics
+    smart.patient.read().then(function (pt) {
+        displayPatient(pt);
+    });
+
+    // A more advanced query: search for active Prescriptions, including med details
+    // DSTU2 use MedicationOrder
+    // smart.patient.api.fetchAllWithReferences({ type: "MedicationOrder" }, ["MedicationOrder.medicationReference"]).then(function (results, refs) {
+
+    //STU3 uses MedicationRequest
+    // smart.patient.api.fetchAllWithReferences({ type: "MedicationRequest" }, ["MedicationRequest.medicationReference"]).then(function (results, refs) {
+    //     results.forEach(function (prescription) {
+    //         // console.log(prescription);
+    //         if (prescription.medicationCodeableConcept) {
+    //             displayMedication(prescription.medicationCodeableConcept.coding);
+    //         } else if (prescription.medicationReference) {
+    //             var med = refs(prescription, prescription.medicationReference);
+    //             displayMedication(med && med.code.coding || []);
+    //         }
+    //     });
+    // });
+
+    // smart.patient.api.fetchAll({ type: "Observation" }).then(function (results) {
+    //     results.forEach(function (observation) {
+    //         console.log(observation);
+    //         displayObservation(observation);
+    //     });
+    // });
 });
-
-// A more advanced query: search for active Prescriptions, including med details
-// DSTU2 use MedicationOrder
-// smart.patient.api.fetchAllWithReferences({ type: "MedicationOrder" }, ["MedicationOrder.medicationReference"]).then(function (results, refs) {
-
-//STU3 uses MedicationRequest
-// smart.patient.api.fetchAllWithReferences({ type: "MedicationRequest" }, ["MedicationRequest.medicationReference"]).then(function (results, refs) {
-//     results.forEach(function (prescription) {
-//         // console.log(prescription);
-//         if (prescription.medicationCodeableConcept) {
-//             displayMedication(prescription.medicationCodeableConcept.coding);
-//         } else if (prescription.medicationReference) {
-//             var med = refs(prescription, prescription.medicationReference);
-//             displayMedication(med && med.code.coding || []);
-//         }
-//     });
-// });
-
-// smart.patient.api.fetchAll({ type: "Observation" }).then(function (results) {
-//     results.forEach(function (observation) {
-//         console.log(observation);
-//         displayObservation(observation);
-//     });
-// });

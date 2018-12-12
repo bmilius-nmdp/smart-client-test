@@ -1,8 +1,8 @@
 function getPatientName(pt) {
     if (pt.name) {
         var names = pt.name.map(function (name) {
-            // return name.given.join(" ") + " " + name.family.join(" ");
-            return name.given.join(" ") + " " + name.family;
+            return name.given.join(" ") + " " + name.family.join(" ");
+            // return name.given.join(" ") + " " + name.family;
         });
         return names.join(" / ")
     } else {
@@ -98,7 +98,7 @@ FHIR.oauth2.ready(function (smart) {
     // Create a FHIR client (server URL, patient id in `demo`)
     // var smart = FHIR.client(demo),
     var pt = smart.patient;
-    console.log(smart.patient);
+    console.log("smart.patient", smart.patient);
 
     // Create a patient banner by fetching + rendering demographics
     smart.patient.read().then(function (pt) {
